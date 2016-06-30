@@ -13,7 +13,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" href="../../favicon.ico">
-        <title>Starter Template for Bootstrap</title>
+        <title>Inicio</title>
         <link href="../template/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
@@ -26,15 +26,17 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="../Inicio">Prueba3 Progra2</a>
+                    <a class="navbar-brand" href="../Inicio">Prueba4 Progra2</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="../Inicio">Inicio</a></li>
-                        <li><a href="../Creadores">Creadores</a></li>
-                        <li><a href="../Lenguajes_Programacion">Lenguajes_Programación</a></li>
-                        <li><a href="../Nacionalidades">Nacionalidades</a></li>
-                        <li><a href="../Usuarios">Usuarios</a></li>
+                        <li><a href="../Creadores/index.jsp">Creadores</a></li>
+                        <li><a href="../Lenguajes_Programacion/index.jsp">Lenguajes_Programación</a></li>
+                        <li><a href="../Nacionalidades/index.jsp">Nacionalidades</a></li>
+                        <li><a href="../Usuarios/index.jsp">Usuarios</a></li>
+                        <li><a href="../Ciudades/index.jsp">Ciudades</a></li>
+                        <li><a href="../Paises/index.jsp">Paises</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -50,7 +52,7 @@
                         <h2>Bienvenido al modulo principal</h2>
                         <hr>
                         <h4><b>Tablas</b></h4>
-                        
+
                         <a href="../Creadores">1.- Creadores</a>
                         <br>
                         <a href="../Lenguajes_Programacion">2.- Lenguajes_Programacion</a>
@@ -58,12 +60,13 @@
                         <a href="../Nacionalidades">3.- Nacionalidades</a>
                         <br>
                         <a href="../Usuarios">4.- Usuarios</a>
+                        <br>
+                        <a href="../Ciudades">5.- Ciudades</a>
+                        <br>
+                        <a href="../Paises">6.- Paises</a>
                         <br><br>
-
-                           <a href="../index.jsp" class="btn btn-danger">Volver al login</a>
-
-
-                    </div>
+                        <a href="../index.jsp" class="btn btn-danger">Volver al login</a>
+                    </div>                 
                 </div>
             </div>
         </div><!-- /.container -->

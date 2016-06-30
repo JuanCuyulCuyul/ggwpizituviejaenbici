@@ -11,8 +11,9 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" href="../../favicon.ico">
-        <title>Starter Template for Bootstrap</title>
-        <link href="../template/css/bootstrap.min.css" rel="stylesheet">
+        <title>Creadores</title>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -24,7 +25,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="../Inicio">Prueba3 Progra2</a>
+                    <a class="navbar-brand" href="../Inicio">Prueba4 Progra2</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
@@ -33,8 +34,10 @@
                         <li><a href="../Lenguajes_Programacion">Lenguajes_Programación</a></li>
                         <li><a href="../Nacionalidades">Nacionalidades</a></li>
                         <li><a href="../Usuarios">Usuarios</a></li>
+                        <li><a href="../Ciudades">Ciudades</a></li>
+                        <li><a href="../Paises">Paises</a></li>
                     </ul>
-                </div><!--/.nav-collapse -->
+                </div>
             </div>
         </nav>
         <div class="container">
@@ -51,26 +54,42 @@
                                 <input type="text" class="form-control" name="nombre" placeholder="Ingresar Nombre">
                             </div>
                             <div class="form-group">
-                                <label for="apepat">1er Apellido</label>
-                                <input type="text" class="form-control" name="apepat" placeholder="Ingresar 1er Apellido">
+                                <label for="apepat">1re Apellido</label>
+                                <input type="text" class="form-control" name="apepat"  placeholder="Ingresar 1re Apellido">
                             </div>
+
                             <div class="form-group">
                                 <label for="apemat">2do Apellido</label>
                                 <input type="text" class="form-control" name="apemat" placeholder="Ingresar 2do Apellido">
                             </div>
+                            
                             <div class="form-group">
-                                <label for="nacionalidad_id">Nacionalidad_id</label>
-                                <input type="text" class="form-control" name="Nacionalidad_id"  placeholder="Ingresar Nacionalidad_id">
+                                <label for="nacionalidad_id">Seleccionar Pais_ID</label>
+                                <select name="nacionalidades" id="nacionalidad_id_">
+                                    <%
+                                       Coneccion con=new Coneccion();
+                                       con.setConsulta("select * from nacionalidades");
+                                       while(con.getResultado().next()){
+                                         out.println("<option value='"+con.getResultado().getString("nacionalidad_id")+"'>"+con.getResultado().getString("nombre")+"</option>");
+                                         %>
+                                     <%}%>
+                                </select>
                             </div>
-                            <button type="submit" class="btn btn-default" name="guardar">Guardar</button>
-
+                                <button type="submit" class="btn btn-danger" name="guardar">Guardar</button>
+                            <a href="../Inicio" class="btn btn-danger">Volver</a>
                         </form>
                     </div>
                 </div>
             </div>
         </div><!-- /.container -->
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="../template/js/bootstrap.min.js"></script>
-
+        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+        
     </body>
 </html>
+
+

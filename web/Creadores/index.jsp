@@ -1,3 +1,4 @@
+<%@page import="negocio.Usuario"%>
 <%@page import="accesodato.Coneccion"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
@@ -15,7 +16,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" href="../../favicon.ico">
-        <title>Starter Template for Bootstrap</title>
+        <title>Creadores</title>
         <link href="../template/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
@@ -28,7 +29,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="../Inicio">Prueba3 Progra2</a>
+                    <a class="navbar-brand" href="../Inicio">Prueba4 Progra2</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
@@ -37,6 +38,8 @@
                         <li><a href="../Lenguajes_Programacion">Lenguajes_Programación</a></li>
                         <li><a href="../Nacionalidades">Nacionalidades</a></li>
                         <li><a href="../Usuarios">Usuarios</a></li>
+                        <li><a href="../Ciudades">Ciudades</a></li>
+                        <li><a href="../Paises">Paises</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -50,9 +53,13 @@
                     </div>
                     <div class="panel-body">
                             <a href="crear.jsp" class="btn btn-primary">Nuevo Creador</a>
+                            <a href="MostrarReporte.jsp" class="btn btn-primary">Ver Reportes</a>
                             <br><br>
-                            <b>Buscar por Nombre: </b><input type="text" name="buscarNombre">  <input type="submit" class="btn btn-danger" value="Buscar">
-                            <br><br>
+                            <form method="post" action="index.jsp">
+                            <b>Buscar por Nombre: </b><input type="text" name="buscarNombre"> 
+                            <input type="submit" class="btn btn-danger" value="Buscar">
+                            </form>
+                            <br>
                             <table class="table table-condensed table-hover table-bordered">
                                 <thead>
                                 <th>Creador_id</th>
@@ -61,40 +68,42 @@
                                 <th>2do Apellido</th>
                                 <th>Nacionalidad_id</th>
                                 <th>Acciones</th>
+                                <th>
                                 </thead>
-                                <tbody>
+                                 <tbody>
                             <%
                                 Coneccion con = new Coneccion();
                                 if (request.getParameter("buscarNombre") != null) {
                                     if (request.getParameter("buscarNombre").isEmpty()) {
                                         con.setConsulta("select * from Creadores where estado='activo'");
                                     } else {
-                                        String nombre = request.getParameter("buscarNombre");
-                                        con.setConsulta("select * from Creadores where nombre like '%" +nombre+ "%' and estado='activo'");
+                                        String creador = request.getParameter("buscarNombre");
+                                        con.setConsulta("select * from Creadores where nombre like '%"+creador+"%' and estado='activo'");
                                     }
                                 } else {
                                     con.setConsulta("select * from Creadores where estado='activo'");
                                 }
                             %>
-                            <% con.setConsulta("select creadores.creador_id,creadores.nombre,creadores.apepat,creadores.apemat,creadores.nacionalidad_id from creadores,nacionalidades where creadores.nacionalidad_id=nacionalidades.nacionalidad_id and creadores.estado='activo'");%>
-                            <% while (con.getResultado().next()) { 
+                            <% while (con.getResultado().next()) { %>
                                 
-                            out.println("<tr>");
-                                
+                            <tr>
+                                <%
                                     out.println("<td>" + con.getResultado().getString("creador_id") + "</td>");
                                     out.println("<td>" + con.getResultado().getString("nombre") + "</td>");
                                     out.println("<td>" + con.getResultado().getString("apepat") + "</td>");
                                     out.println("<td>" + con.getResultado().getString("apemat") + "</td>");
                                     out.println("<td>" + con.getResultado().getString("nacionalidad_id") + "</td>");
-                                    out.println("<td>" + "<a href='../ServletCreador?eliminar=" + con.getResultado().getString("creador_id") + "'>Eliminar</a>" + "</td>");
-                                    out.println("<td>" + "<a href='editar.jsp?creador_id=" + con.getResultado().getString("creador_id") + "'>Editar</a>" + "</td>");
-                                
-
-                            out.println("</tr>");
-                             }%>
+                                    out.println("<td>"+"<a href='../ServletCreador?eliminar="+con.getResultado().getString("creador_id")+"' class='btn btn-danger'>Eliminar</a>"+"</td>");
+                                    out.println("<td>"+"<a href='editar.jsp?editar="+con.getResultado().getString("creador_id")+"' class='btn btn-primary'>Editar</a>"+"</td>");
+                                %>
+                            </tr>
+                            <% }%>
                         </tbody>
                             </table>
-                            <a href="../Inicio" class="btn btn-danger">Volver</a>                     
+                            <a href="../Inicio" class="btn btn-danger">Volver</a>
+                        
+                        
+                        
                     </div>
                 </div>
             </div>

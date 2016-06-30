@@ -4,14 +4,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import negocio.Nacionalidad;
+import negocio.Usuario;
 
-public class ServletNacionalidad extends HttpServlet {
+public class ServletSolido extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        Nacionalidad nac=new Nacionalidad();
+        
+                Usuario user=new Usuario();
         
                 try (PrintWriter out = response.getWriter()) {
                     
@@ -19,35 +20,48 @@ public class ServletNacionalidad extends HttpServlet {
               
                 int id=Integer.parseInt(request.getParameter("eliminar"));
                 out.println("Eliminar ID:"+id);
-                nac.setNacionalidad_id(id);
+                user.setUsuario_id(id);
                
-                nac.eliminar();
+                user.eliminar();
                
-                response.sendRedirect("Nacionalidades");
+                response.sendRedirect("Usuarios");
                
             }else if(request.getParameter("guardar")!=null){
                
-                String nombre=request.getParameter("nombre");
-                                
-               nac.setNombre(nombre);
-                                                           
-                nac.guardar();
+                String usuario=request.getParameter("usuario");
+                String clave=request.getParameter("clave");
+                String fecha_nacimiento=request.getParameter("fecha_nacimiento");
+               int ciudad_id=Integer.parseInt(request.getParameter("ciudad_id"));
+                
+               user.setUsuario(usuario);
+                user.setClave(clave);
+                user.setFecha_nacimiento(fecha_nacimiento);
+              user.setCiudad_id(ciudad_id);
+              
+                user.guardar();
                
-               response.sendRedirect("Nacionalidades");
+               response.sendRedirect("Usuarios");
                
             }else if(request.getParameter("editar")!=null){
                
-                int nacionalidad_id=Integer.parseInt(request.getParameter("nacionalidad_id"));
-                String nombre=request.getParameter("nombre");
+                int usuario_id=Integer.parseInt(request.getParameter("usuario_id"));
+                String usuario=request.getParameter("usuario");
+                String clave=request.getParameter("clave");
+                String fecha_nacimiento=request.getParameter("fecha_nacimiento");
+                 int ciudad_id=Integer.parseInt(request.getParameter("ciudad_id"));
                
-                nac.setNacionalidad_id(nacionalidad_id);
-                nac.setNombre(nombre);
-                               
-                nac.actualizar();
+                user.setUsuario_id(usuario_id);
+                user.setUsuario(usuario);
+                user.setClave(clave);
+                user.setFecha_nacimiento(fecha_nacimiento);
+                user.setCiudad_id(ciudad_id);
                 
-                response.sendRedirect("Nacionalidades");
+                user.actualizar();
+                
+                response.sendRedirect("Usuarios");
            }
                 }
+    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

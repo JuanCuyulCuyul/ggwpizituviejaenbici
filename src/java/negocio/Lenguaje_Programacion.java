@@ -64,7 +64,7 @@ public class Lenguaje_Programacion {
         this.estado = estado;
     }
      public void guardar(){
-        con.setInsertar("insert into Lenguajes_programacion(nombre,fecha_cracion,creador_id,usuario_id,estado) values('"+this.getNombre()+"','"+this.getFecha_creacion()+"','"+this.getCreador_id()+"','"+this.getUsuario_id()+"','activo')");
+        con.setInsertar("insert into Lenguajes_programacion(nombre,fecha_creacion,creador_id,usuario_id,estado) values('"+this.getNombre()+"','"+this.getFecha_creacion()+"','"+this.getCreador_id()+"','"+this.getUsuario_id()+"','activo')");
     }
     public void eliminar(){
         con.setInsertar("update Lenguajes_programacion set estado='pasivo' where lenguaje_id='"+this.getLenguaje_id()+"'");

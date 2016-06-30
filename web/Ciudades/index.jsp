@@ -16,7 +16,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" href="../../favicon.ico">
-        <title>Lenguajes_Programacion</title>
+        <title>Ciudades</title>
         <link href="../template/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
@@ -35,10 +35,10 @@
                     <ul class="nav navbar-nav">
                         <li><a href="../Inicio">Inicio</a></li>
                         <li><a href="../Creadores">Creadores</a></li>
-                        <li class="active"><a href="../Lenguajes_Programacion">Lenguajes_Programación</a></li>
+                        <li><a href="../Lenguajes_Programacion">Lenguajes_Programación</a></li>
                         <li><a href="../Nacionalidades">Nacionalidades</a></li>
                         <li><a href="../Usuarios">Usuarios</a></li>
-                        <li><a href="../Ciudades">Ciudades</a></li>
+                        <li class="active"><a href="../Ciudades">Ciudades</a></li>
                         <li><a href="../Paises">Paises</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
@@ -49,58 +49,54 @@
             <div class="row">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Tabla Lenguajes_Programacion</h3>
+                        <h3 class="panel-title">Tabla Ciudades</h3>
                     </div>
                     <div class="panel-body">
-                            <a href="crear.jsp" class="btn btn-primary">Nuevo Lenguaje</a>
-                            <a href="MostrarReporte.jsp" class="btn btn-primary">Ver Reportes</a>
+                            <a href="crear.jsp" class="btn btn-primary">Nueva Ciudad</a>
+                            <a href="MostrarReporte.jsp" class="btn btn-primary">Ver Reportes</a>>
                             <br><br>
                             <form method="post" action="index.jsp">
                             <b>Buscar por Nombre: </b><input type="text" name="buscarNombre"> 
                             <input type="submit" class="btn btn-danger" value="Buscar">
-                           </form>
-                            <br>
+                            </form>
+                                <br>
                             <table class="table table-condensed table-hover table-bordered">
                                 <thead>
-                                <th>Lenguaje_ID</th>
+                                <th>Ciudad_ID</th>
                                 <th>Nombre</th>
-                                <th>Fecha_Creacion</th>
-                                <th>Creador_ID</th>
-                                <th>Usuario_ID</th>
+                                <th>Creado_Por</th>
+                                <th>Pais_ID</th>
                                 <th>Acciones</th>
                                 <th></th>
                                 </thead>
                                 <tbody>
-                                <%
-                                    Coneccion con = new Coneccion();
-                                    if (request.getParameter("buscarNombre") != null) {
-                                        if (request.getParameter("buscarNombre").isEmpty()) {
-                                            con.setConsulta("select * from Lenguajes_programacion where estado='activo'");
-                                        } else {
-                                            String nombre = request.getParameter("buscarNombre");
-                                            con.setConsulta("select * from Lenguajes_programacion where nombre like '%" + nombre + "%' and estado='activo'");
-                                        }
+                            <%
+                                Coneccion con = new Coneccion();
+                                if (request.getParameter("buscarNombre") != null) {
+                                    if (request.getParameter("buscarNombre").isEmpty()) {
+                                        con.setConsulta("select * from Ciudades where estado='activo'");
                                     } else {
-                                        con.setConsulta("select * from Lenguajes_programacion where estado='activo'");
+                                        String ciudad = request.getParameter("buscarNombre");
+                                        con.setConsulta("select * from Ciudades where nombre like '%"+ciudad+"%' and estado='activo'");
                                     }
+                                } else {
+                                    con.setConsulta("select * from Ciudades where estado='activo'");
+                                }
+                            %>
+                            <% while (con.getResultado().next()) { %>
+                                
+                            <tr>
+                                <%
+                                    out.println("<td>" + con.getResultado().getString("ciudad_id") + "</td>");
+                                    out.println("<td>" + con.getResultado().getString("nombre") + "</td>");
+                                    out.println("<td>" + con.getResultado().getString("creado_por") + "</td>");
+                                    out.println("<td>" + con.getResultado().getString("pais_id") + "</td>");
+                                    out.println("<td>"+"<a href='../ServletCiudad?eliminar="+con.getResultado().getString("ciudad_id")+"' class='btn btn-danger'>Eliminar</a>"+"</td>");
+                                    out.println("<td>"+"<a href='editar.jsp?editar="+con.getResultado().getString("ciudad_id")+"' class='btn btn-primary'>Editar</a>"+"</td>");
                                 %>
-                                <% while (con.getResultado().next()) { %>
-                                <tr>
-                                    <%
-                                        out.println("<td>" + con.getResultado().getString("lenguaje_id") + "</td>");
-                                        out.println("<td>" + con.getResultado().getString("nombre") + "</td>");
-                                        out.println("<td>" + con.getResultado().getString("fecha_creacion") + "</td>");
-                                        out.println("<td>" + con.getResultado().getString("creador_id") + "</td>");
-                                        out.println("<td>" + con.getResultado().getString("usuario_id") + "</td>");
-                                        out.println("<td>"+"<a href='../ServletLenguaje_Programacion?eliminar="+con.getResultado().getString("lenguaje_id")+"' class='btn btn-danger'>Eliminar</a>"+"</td>");
-                                        out.println("<td>"+"<a href='editar.jsp?editar="+con.getResultado().getString("lenguaje_id")+"' class='btn btn-primary'>Editar</a>"+"</td>");
-
-
-                                    %>
-
-                                </tr>
-                                <% }%>
-                            </tbody>
+                            </tr>
+                            <% }%>
+                        </tbody>
                             </table>
                             <a href="../Inicio" class="btn btn-danger">Volver</a>
                         

@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="template/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="template/css/form-elements.css">
         <link rel="stylesheet" href="template/css/style.css">
-        <title>Starter Template for Bootstrap</title>
+        <title>Login</title>
         <link href="template/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
@@ -25,7 +25,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-8 col-sm-offset-2 text">
-                                <h1><strong>Prueba 3</strong> Progra 2</h1>
+                                <h1><strong>Prueba 4</strong> Progra 2</h1>
                             </div>
                         </div>
                         <div class="row">
@@ -33,7 +33,7 @@
                                 <div class="form-top">
                                     <div class="form-top-left">
                                         <h3>Accede a nuestro sitio</h3>
-                                        <p>Introduzca su nombre de usuario y contraseña para iniciar sesión:</p>
+                                        <p>Introduzca su nombre de usuario y clave para iniciar sesión:</p>
                                     </div>
                                     <div class="form-top-right">
                                         <i class="fa fa-key"></i>
@@ -42,12 +42,12 @@
                                 <div class="form-bottom">
                                     <form role="form" action="Inicio" method="post" class="login-form">
                                         <div class="form-group">
-                                            <label class="sr-only" for="form-username">Username</label>
-                                            <input type="text" name="form-username" placeholder="Username..." class="form-username form-control" id="form-username">
+                                            <label class="sr-only" for="form-usuario">Usuario</label>
+                                            <input type="text" name="form-usuario" placeholder="Usuario..." class="form-usuario form-control" id="form-usuario">
                                         </div>
                                         <div class="form-group">
-                                            <label class="sr-only" for="form-password">Password</label>
-                                            <input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
+                                            <label class="sr-only" for="form-clave">Clave</label>
+                                            <input type="clave" name="form-clave" placeholder="Clave..." class="form-clave form-control" id="form-clave">
                                         </div>
                                         <button type="submit" class="btn"><a href="Inicio"></a>Ingresar!</button>
                                     </form>

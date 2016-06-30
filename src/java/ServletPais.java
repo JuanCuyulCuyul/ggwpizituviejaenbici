@@ -4,14 +4,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import negocio.Nacionalidad;
+import negocio.Pais;
 
-public class ServletNacionalidad extends HttpServlet {
+public class ServletPais extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        Nacionalidad nac=new Nacionalidad();
+        Pais pai=new Pais();
         
                 try (PrintWriter out = response.getWriter()) {
                     
@@ -19,33 +19,37 @@ public class ServletNacionalidad extends HttpServlet {
               
                 int id=Integer.parseInt(request.getParameter("eliminar"));
                 out.println("Eliminar ID:"+id);
-                nac.setNacionalidad_id(id);
+                pai.setPais_id(id);
                
-                nac.eliminar();
+                pai.eliminar();
                
-                response.sendRedirect("Nacionalidades");
+                response.sendRedirect("Paises");
                
             }else if(request.getParameter("guardar")!=null){
                
                 String nombre=request.getParameter("nombre");
-                                
-               nac.setNombre(nombre);
-                                                           
-                nac.guardar();
+                String creado_por=request.getParameter("creado_por");
+                
+               pai.setNombre(nombre);
+                pai.setCreado_por(creado_por);
+                                            
+                pai.guardar();
                
-               response.sendRedirect("Nacionalidades");
+               response.sendRedirect("Paises");
                
             }else if(request.getParameter("editar")!=null){
                
-                int nacionalidad_id=Integer.parseInt(request.getParameter("nacionalidad_id"));
+                int pais_id=Integer.parseInt(request.getParameter("pais_id"));
                 String nombre=request.getParameter("nombre");
+                String creado_por=request.getParameter("creado_por");
                
-                nac.setNacionalidad_id(nacionalidad_id);
-                nac.setNombre(nombre);
+                pai.setPais_id(pais_id);
+                pai.setNombre(nombre);
+                pai.setCreado_por(creado_por);
                                
-                nac.actualizar();
+                pai.actualizar();
                 
-                response.sendRedirect("Nacionalidades");
+                response.sendRedirect("Paises");
            }
                 }
     }

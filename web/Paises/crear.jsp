@@ -11,7 +11,7 @@
             <meta name="description" content="">
             <meta name="author" content="">
             <link rel="icon" href="../../favicon.ico">
-            <title>Nacionalidades</title>
+            <title>Paises</title>
             <link href="../template/css/bootstrap.min.css" rel="stylesheet">
         </head>
         <body>
@@ -31,10 +31,10 @@
                             <li><a href="../Inicio">Inicio</a></li>
                             <li><a href="../Creadores">Creadores</a></li>
                             <li><a href="../Lenguajes_Programacion">Lenguajes_Programación</a></li>
-                            <li class="active"><a href="../Nacionalidades">Nacionalidades</a></li>
+                            <li><a href="../Nacionalidades">Nacionalidades</a></li>
                             <li><a href="../Usuarios">Usuarios</a></li>
                             <li><a href="../Ciudades">Ciudades</a></li>
-                            <li><a href="../Paises">Paises</a></li>
+                            <li class="active"><a href="../Paises">Paises</a></li>
                         </ul>
                     </div>
                 </div>
@@ -44,16 +44,20 @@
                 <div class="row">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Crear Nacionalidad</h3>
+                            <h3 class="panel-title">Crear Paises</h3>
                         </div>
                         <div class="panel-body">
-                            <form method="POST" action="../ServletNacionalidad">
+                            <form method="POST" action="../ServletPais">
                                 <div class="form-group">
                                     <label for="nombre">Nombre</label>
                                     <input type="text" class="form-control" name="nombre" placeholder="Ingresar Nombre">
                                 </div>
+                                <div class="form-group">
+                                    <label for="creado_por">Creado_Por</label>
+                                    <input type="text" class="form-control" name="creado_por"  placeholder="Ingresar Creado_Por">
+                                </div>
                                 <button type="submit" class="btn btn-danger" name="guardar">Guardar</button>
-                                <a href="../Inicio" class="btn btn-danger">Volver</a>                    
+                                <a href="../Inicio" class="btn btn-danger">Volver</a>                          
                             </form>
                         </div>
                     </div>
@@ -65,6 +69,3 @@
             <script src="../template/js/bootstrap.min.js"></script>
         </body>
     </html>
-
-
-

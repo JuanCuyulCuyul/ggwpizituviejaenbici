@@ -11,10 +11,8 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" href="../../favicon.ico">
-        <title>Lenguajes_Programacion</title>
+        <title>Ciudades</title>
         <link href="../template/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -32,10 +30,10 @@
                     <ul class="nav navbar-nav">
                         <li><a href="../Inicio">Inicio</a></li>
                         <li><a href="../Creadores">Creadores</a></li>
-                        <li class="active"><a href="../Lenguajes_Programacion">Lenguajes_Programación</a></li>
+                        <li><a href="../Lenguajes_Programacion">Lenguajes_Programación</a></li>
                         <li><a href="../Nacionalidades">Nacionalidades</a></li>
                         <li><a href="../Usuarios">Usuarios</a></li>
-                        <li><a href="../Ciudades">Ciudades</a></li>
+                        <li class="active"><a href="../Ciudades">Ciudades</a></li>
                         <li><a href="../Paises">Paises</a></li>
                     </ul>
                 </div>
@@ -46,33 +44,34 @@
             <div class="row">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Crear Lenguaje_Programacion</h3>
+                        <h3 class="panel-title">Crear Ciudades</h3>
                     </div>
                     <div class="panel-body">
-                        <form method="POST" action="../ServletLenguaje_Programacion">
+                        <form method="POST" action="../ServletCiudad">
                             <div class="form-group">
                                 <label for="nombre">Nombre</label>
                                 <input type="text" class="form-control" name="nombre" placeholder="Ingresar Nombre">
                             </div>
                             <div class="form-group">
-                                <label for="fecha_creacion">Fecha_Creacion</label>
-                                <input type="text" class="form-control" name="fecha_creacion"  placeholder="Ingresar Fecha_Creacion">
+                                <label for="creado_por">Creado_Por</label>
+                                <input type="text" class="form-control" name="creado_por"  placeholder="Ingresar Creado_Por">
                             </div>
 
                             <div class="form-group">
-                                <label for="creador_id">Seleccionar Creador_ID</label>
-                                <select name="creadores" id="creador_id" class="form-control">
-
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="usuario_id">Seleccionar Usuario_ID</label>
-                                <select name="usuarios" id="usuario_id" class="form-control">
-
+                                
+                                <label for="pais_id">Seleccionar Pais_ID</label>
+                                <select name="paises" id="pais_id">
+                                    <%
+                                       Coneccion con=new Coneccion();
+                                       con.setConsulta("select * from paises");
+                                       while(con.getResultado().next()){
+                                         out.println("<option value='"+con.getResultado().getString("pais_id")+"'>"+con.getResultado().getString("nombre")+"</option>");
+                                         %>
+                                     <%}%>
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-danger" name="guardar">Guardar</button>
-                            <a href="../Inicio" class="btn btn-danger">Volver</a>                                                        
+                            <a href="../Inicio" class="btn btn-danger">Volver</a>
                         </form>
                     </div>
                 </div>
@@ -82,33 +81,5 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="../template/js/bootstrap.min.js"></script>
-        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('select').select2();
-                $('#creadores').append('<option> Seleccionar Creador_ID</option>');
-                $.get("http://localhost:8080/Solido/ServletMostrarLenguaje", function (data, status) {
-                    $.each(data, function (i, item) {
-                        $('#creadores').append('<option value=' + item.creador_id + '>' + item.nombre + '</option>');
-                    });
-
-                });
-            });
-
-            $("#creadores").change(function () {
-                $("#usuarios").empty();
-                var creador_id = $("#creadores").val();
-                alert("" + servicio_id);
-                $.get("http://localhost:8080/Solido/ServletMostrarLenguaje?creador_id=" + creador_id, function (data, status) {
-                    $.each(data, function (i, item) {
-                        $('#usuarios').append('<option value=' + item.usuario_id + '>' + item.nombre + '</option>');
-                    });
-
-                });
-
-            });
-        </script> 
     </body>
 </html>

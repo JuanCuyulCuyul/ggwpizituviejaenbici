@@ -16,7 +16,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" href="../../favicon.ico">
-        <title>Starter Template for Bootstrap</title>
+        <title>Usuarios</title>
         <link href="../template/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
@@ -29,7 +29,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="../Inicio">Prueba3 Progra2</a>
+                    <a class="navbar-brand" href="../Inicio">Prueba4 Progra2</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
@@ -38,6 +38,8 @@
                         <li><a href="../Lenguajes_Programacion">Lenguajes_Programación</a></li>
                         <li><a href="../Nacionalidades">Nacionalidades</a></li>
                         <li class="active"><a href="../Usuarios">Usuarios</a></li>
+                        <li><a href="../Ciudades">Ciudades</a></li>
+                        <li><a href="../Paises">Paises</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -50,52 +52,60 @@
                         <h3 class="panel-title">Tabla Usuarios</h3>
                     </div>
                     <div class="panel-body">
-                            <a href="crear.jsp" class="btn btn-primary">Nuevo Usuario</a>
-                            <br><br>
-                            <b>Buscar por Usuario: </b><input type="text" name="buscarUsuario">  <input type="submit" class="btn btn-danger" value="Buscar">
-                            <br><br>
-                            <table class="table table-condensed table-hover table-bordered">
-                                <thead>
-                                <th>Usuario_id</th>
-                                <th>Usuario</th>
-                                <th>Clave</th>
-                                <th>Fecha_nacimiento</th>
-                                <th>Acciones</th>
-                                </thead>
-                                <tbody>
-                            <%
-                                Coneccion con = new Coneccion();
-                                if (request.getParameter("buscarUsuario") != null) {
-                                    if (request.getParameter("buscarUsuario").isEmpty()) {
-                                        con.setConsulta("select * from Usuarios where estado='activo'");
+                        <a href="crear.jsp" class="btn btn-primary">Nuevo Usuario</a>
+                        <a href="MostrarReporte.jsp" class="btn btn-primary">Ver Reportes</a>
+                        <br><br>
+                        <form method="post" action="index.jsp">
+                            <b>Buscar por Usuario: </b><input type="text" name="buscarUsuario"> 
+                            <input type="submit" class="btn btn-danger" value="Buscar">
+                        </form>
+                        <br>
+                        <table class="table table-condensed table-hover table-bordered">
+                            <thead>
+                            <th>Usuario_ID</th>
+                            <th>Usuario</th>
+                            <th>Clave</th>
+                            <th>Fecha_Nacimiento</th>
+                            <th>Ciudad_ID</th>
+                            <th>Acciones</th>
+                            <th></th>
+                            </thead>
+                            <tbody>
+                                <%
+                                    Coneccion con = new Coneccion();
+                                    if (request.getParameter("buscarUsuario") != null) {
+                                        if (request.getParameter("buscarUsuario").isEmpty()) {
+                                            con.setConsulta("select * from Usuarios where estado='activo'");
+                                        } else {
+                                            String usuario = request.getParameter("buscarUsuario");
+                                            con.setConsulta("select * from Usuarios where usuario like '%" + usuario + "%' and estado='activo'");
+                                        }
                                     } else {
-                                        String usuario = request.getParameter("buscarUsuarios");
-                                        con.setConsulta("select * from Usuarios where usuario like '%"+usuario+"%' and estado='activo'");
+                                        con.setConsulta("select * from Usuarios where estado='activo'");
                                     }
-                                } else {
-                                    con.setConsulta("select * from Usuarios where estado='activo'");
-                                }
-                            %>
-                            <% while (con.getResultado().next()) { 
-                                
-                            out.println("<tr>");
-                                
-                                    out.println("<td>" + con.getResultado().getString("usuario_id") + "</td>");
-                                    out.println("<td>" + con.getResultado().getString("usuario") + "</td>");
-                                    out.println("<td>" + con.getResultado().getString("clave") + "</td>");
-                                    out.println("<td>" + con.getResultado().getString("fecha_nacimiento") + "</td>");
-                                    out.println("<td>" + "<a href='../ServletUsuario?eliminar=" + con.getResultado().getString("usuario_id") + "'>Eliminar</a>" + "</td>");
-                                    out.println("<td>" + "<a href='editar.jsp?usuario_id=" + con.getResultado().getString("usuario_id") + "'>Editar</a>" + "</td>");
-                                
+                                %>
+                                <% while (con.getResultado().next()) { %>
+                                <tr>
+                                    <%
+                                        out.println("<td>" + con.getResultado().getString("usuario_id") + "</td>");
+                                        out.println("<td>" + con.getResultado().getString("usuario") + "</td>");
+                                        out.println("<td>" + con.getResultado().getString("clave") + "</td>");
+                                        out.println("<td>" + con.getResultado().getString("fecha_nacimiento") + "</td>");
+                                        out.println("<td>" + con.getResultado().getString("ciudad_id") + "</td>");
+                                        out.println("<td>"+"<a href='../ServletSolido?eliminar="+con.getResultado().getString("usuario_id")+"' class='btn btn-danger'>Eliminar</a>"+"</td>");
+                                        out.println("<td>"+"<a href='editar.jsp?editar="+con.getResultado().getString("usuario_id")+"' class='btn btn-primary'>Editar</a>"+"</td>");
 
-                            out.println("</tr>");
-                             }%>
-                        </tbody>
-                            </table>
-                            <a href="../Inicio" class="btn btn-danger">Volver</a>
-                        
-                        
-                        
+
+                                    %>
+
+                                </tr>
+                                <% }%>
+                            </tbody>
+                        </table>
+                        <a href="../Inicio" class="btn btn-danger">Volver</a>
+
+
+
                     </div>
                 </div>
             </div>

@@ -11,56 +11,55 @@ public class ServletCreador extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        Creador cr=new Creador();
         
-                Creador cre=new Creador();
-            
-            try (PrintWriter out = response.getWriter()) {
-            
-            if(request.getParameter("eliminar")!=null){
-               
-            int id=Integer.parseInt(request.getParameter("eliminar"));
+                try (PrintWriter out = response.getWriter()) {
+                    
+                    if(request.getParameter("eliminar")!=null){
+              
+                int id=Integer.parseInt(request.getParameter("eliminar"));
                 out.println("Eliminar ID:"+id);
-                cre.setCreador_id(id);
+                cr.setCreador_id(id);
                
-                cre.eliminar();
+                cr.eliminar();
                
-                response.sendRedirect("Creadores/index.jsp");
+                response.sendRedirect("Creadores");
                
-           }else if(request.getParameter("guardar")!=null){
+            }else if(request.getParameter("guardar")!=null){
                
-               String nombre=request.getParameter("nombre");
-               String apepat=request.getParameter("apepat");
-               String apemat=request.getParameter("apemat");
+                String nombre=request.getParameter("nombre");
+                String apepat=request.getParameter("apepat");
+                String apemat=request.getParameter("apemat");
                int nacionalidad_id=Integer.parseInt(request.getParameter("nacionalidad_id"));
+                
+                cr.setNombre(nombre);
+                cr.setApepat(apepat);
+                cr.setApemat(apemat);
+              cr.setNacionalidad_id(nacionalidad_id);
+              
+                cr.guardar();
                
-               cre.setNombre(nombre);
-               cre.setApepat(apepat);
-               cre.setApepat(apemat);
-               cre.setNacionalidad_id(nacionalidad_id);
+               response.sendRedirect("Creadores");
                
-               cre.guardar();
+            }else if(request.getParameter("editar")!=null){
                
-               response.sendRedirect("Creadores/index.jsp");
+                int creador_id=Integer.parseInt(request.getParameter("creador_id"));
+                String nombre=request.getParameter("nombre");
+                String apepat=request.getParameter("apepat");
+                String apemat=request.getParameter("apemat");
+                 int nacionalidad_id=Integer.parseInt(request.getParameter("nacionalidad_id"));
                
-           }else if(request.getParameter("editar")!=null){
-               
-               int creador_id=Integer.parseInt(request.getParameter("creador_id"));
-               String nombre=request.getParameter("nombre");
-               String apepat=request.getParameter("apepat");
-               String apemat=request.getParameter("apemat");
-               int nacionalidad_id=Integer.parseInt(request.getParameter("nacionalidad_id"));
-               
-               cre.setCreador_id(creador_id);
-               cre.setNombre(nombre);
-               cre.setApepat(apepat);
-               cre.setApemat(apemat);
-               cre.setNacionalidad_id(nacionalidad_id);
-               
-               cre.actualizar();
-               
-               response.sendRedirect("Creadores/index.jsp");
+                cr.setCreador_id(creador_id);
+                cr.setNombre(nombre);
+                cr.setApepat(apepat);
+                cr.setApemat(apemat);
+                cr.setNacionalidad_id(nacionalidad_id);
+                
+                cr.actualizar();
+                
+                response.sendRedirect("Creadores");
            }
-        }
+                }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

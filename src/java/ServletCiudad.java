@@ -4,15 +4,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import negocio.Usuario;
+import negocio.Ciudad;
 
-public class ServletUsuario extends HttpServlet {
+
+public class ServletCiudad extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-                Usuario user=new Usuario();
+         Ciudad ciu=new Ciudad();
         
                 try (PrintWriter out = response.getWriter()) {
                     
@@ -20,43 +20,43 @@ public class ServletUsuario extends HttpServlet {
               
                 int id=Integer.parseInt(request.getParameter("eliminar"));
                 out.println("Eliminar ID:"+id);
-                user.setUsuario_id(id);
+                ciu.setCiudad_id(id);
                
-                user.eliminar();
+                ciu.eliminar();
                
-                response.sendRedirect("Usuarios/index.jsp");
+                response.sendRedirect("Ciudades");
                
             }else if(request.getParameter("guardar")!=null){
                
-                String usuario=request.getParameter("usuario");
-                String clave=request.getParameter("clave");
-                String fecha_nacimiento=request.getParameter("fecha_nacimiento");
+                String nombre=request.getParameter("nombre");
+                String creado_por=request.getParameter("creado_por");
+               int pais_id=Integer.parseInt(request.getParameter("pais_id"));
+                
+                ciu.setNombre(nombre);
+                ciu.setCreado_por(creado_por);
+                ciu.setPais_id(pais_id);
+                            
+                ciu.guardar();
                
-                user.setUsuario(usuario);
-                user.setClave(clave);
-                user.setFecha_nacimiento(fecha_nacimiento);
-               
-                user.guardar();
-               
-               response.sendRedirect("Usuarios/index.jsp");
+               response.sendRedirect("Ciudades");
                
             }else if(request.getParameter("editar")!=null){
                
-                int usuario_id=Integer.parseInt(request.getParameter("usuario_id"));
-                String usuario=request.getParameter("usuario");
-                String clave=request.getParameter("clave");
-                String fecha_nacimiento=request.getParameter("fecha_nacimiento");
+                int ciudad_id=Integer.parseInt(request.getParameter("ciudad_id"));
+                String nombre=request.getParameter("nombre");
+                String creado_por=request.getParameter("creado_por");
+                 int pais_id=Integer.parseInt(request.getParameter("pais_id"));
                
-                user.setUsuario_id(usuario_id);
-                user.setUsuario(usuario);
-                user.setClave(clave);
-                user.setFecha_nacimiento(fecha_nacimiento);
+                ciu.setCiudad_id(ciudad_id);
+                ciu.setNombre(nombre);
+                ciu.setCreado_por(creado_por);
+                ciu.setPais_id(pais_id);
                 
-                user.actualizar();
+                ciu.actualizar();
                 
-                response.sendRedirect("Usuarios/index.jsp");
+                response.sendRedirect("Ciudades");
            }
-        }
+                }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

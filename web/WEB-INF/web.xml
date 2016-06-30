@@ -1,36 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>ServletUsuario</servlet-name>
-        <servlet-class>ServletUsuario</servlet-class>
+        <servlet-name>ServletSolido</servlet-name>
+        <servlet-class>ServletSolido</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ServletLengujes_Progracion</servlet-name>
-        <servlet-class>ServletLengujes_Progracion</servlet-class>
+        <servlet-name>ServletPais</servlet-name>
+        <servlet-class>ServletPais</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletNacionalidad</servlet-name>
+        <servlet-class>ServletNacionalidad</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletLenguaje_Programacion</servlet-name>
+        <servlet-class>ServletLenguaje_Programacion</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ServletCreador</servlet-name>
         <servlet-class>ServletCreador</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ServletNacionalidad</servlet-name>
-        <servlet-class>ServletNacionalidad</servlet-class>
+        <servlet-name>ServletCiudad</servlet-name>
+        <servlet-class>ServletCiudad</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletListaCreadores</servlet-name>
+        <servlet-class>Listas.ServletListaCreadores</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletMostrarLenguaje</servlet-name>
+        <servlet-class>ServletMostrarLenguaje</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ServletUsuario</servlet-name>
-        <url-pattern>/ServletUsuario</url-pattern>
+        <servlet-name>ServletSolido</servlet-name>
+        <url-pattern>/ServletSolido</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ServletLengujes_Progracion</servlet-name>
-        <url-pattern>/ServletLengujes_Progracion</url-pattern>
+        <servlet-name>ServletPais</servlet-name>
+        <url-pattern>/ServletPais</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletNacionalidad</servlet-name>
+        <url-pattern>/ServletNacionalidad</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletLenguaje_Programacion</servlet-name>
+        <url-pattern>/ServletLenguaje_Programacion</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ServletCreador</servlet-name>
         <url-pattern>/ServletCreador</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ServletNacionalidad</servlet-name>
-        <url-pattern>/ServletNacionalidad</url-pattern>
+        <servlet-name>ServletCiudad</servlet-name>
+        <url-pattern>/ServletCiudad</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletListaCreadores</servlet-name>
+        <url-pattern>/ServletListaCreadores</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletMostrarLenguaje</servlet-name>
+        <url-pattern>/ServletMostrarLenguaje</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
