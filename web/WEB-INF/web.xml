@@ -29,8 +29,8 @@
         <servlet-class>Listas.ServletListaCreadores</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ServletMostrarLenguaje</servlet-name>
-        <servlet-class>ServletMostrarLenguaje</servlet-class>
+        <servlet-name>ServletLogin</servlet-name>
+        <servlet-class>ServletLogin</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletSolido</servlet-name>
@@ -61,8 +61,8 @@
         <url-pattern>/ServletListaCreadores</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ServletMostrarLenguaje</servlet-name>
-        <url-pattern>/ServletMostrarLenguaje</url-pattern>
+        <servlet-name>ServletLogin</servlet-name>
+        <url-pattern>/ServletLogin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -25,7 +25,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="../Inicio">Prueba4 Progra2</a>
+                    <a class="navbar-brand" href="../Inicio">Prueba3 Progra2</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
@@ -65,7 +65,7 @@
                             
                             <div class="form-group">
                                 <label for="nacionalidad_id">Seleccionar Pais_ID</label>
-                                <select name="nacionalidades" id="nacionalidad_id_">
+                                <select class="form-control" name="nacionalidad_id" id="nacionalidad_id">
                                     <%
                                        Coneccion con=new Coneccion();
                                        con.setConsulta("select * from nacionalidades");

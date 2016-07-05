@@ -29,7 +29,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="../Inicio">Prueba4 Progra2</a>
+                    <a class="navbar-brand" href="../Inicio">Prueba3 Progra2</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
@@ -52,56 +52,57 @@
                         <h3 class="panel-title">Tabla Ciudades</h3>
                     </div>
                     <div class="panel-body">
-                            <a href="crear.jsp" class="btn btn-primary">Nueva Ciudad</a>
-                            <a href="MostrarReporte.jsp" class="btn btn-primary">Ver Reportes</a>>
-                            <br><br>
-                            <form method="post" action="index.jsp">
+                        <a href="crear.jsp" class="btn btn-primary">Nueva Ciudad</a>
+                        <a href="MostrarReporte.jsp" class="btn btn-primary">Ver Reportes</a>
+                        <br><br>
+                        <form method="post" action="index.jsp">
                             <b>Buscar por Nombre: </b><input type="text" name="buscarNombre"> 
                             <input type="submit" class="btn btn-danger" value="Buscar">
-                            </form>
-                                <br>
-                            <table class="table table-condensed table-hover table-bordered">
-                                <thead>
-                                <th>Ciudad_ID</th>
-                                <th>Nombre</th>
-                                <th>Creado_Por</th>
-                                <th>Pais_ID</th>
-                                <th>Acciones</th>
-                                <th></th>
-                                </thead>
-                                <tbody>
-                            <%
-                                Coneccion con = new Coneccion();
-                                if (request.getParameter("buscarNombre") != null) {
-                                    if (request.getParameter("buscarNombre").isEmpty()) {
-                                        con.setConsulta("select * from Ciudades where estado='activo'");
-                                    } else {
-                                        String ciudad = request.getParameter("buscarNombre");
-                                        con.setConsulta("select * from Ciudades where nombre like '%"+ciudad+"%' and estado='activo'");
-                                    }
-                                } else {
-                                    con.setConsulta("select * from Ciudades where estado='activo'");
-                                }
-                            %>
-                            <% while (con.getResultado().next()) { %>
-                                
-                            <tr>
+                        </form>
+                        <br>
+                        <table class="table table-condensed table-hover table-bordered">
+                            <thead>
+                            <th>Ciudad_ID</th>
+                            <th>Nombre</th>
+                            <th>Creado_Por</th>
+                            <th>Pais_ID</th>
+                            <th>Acciones</th>
+                            <th></th>
+                            </thead>
+                            <tbody>
+
                                 <%
-                                    out.println("<td>" + con.getResultado().getString("ciudad_id") + "</td>");
-                                    out.println("<td>" + con.getResultado().getString("nombre") + "</td>");
-                                    out.println("<td>" + con.getResultado().getString("creado_por") + "</td>");
-                                    out.println("<td>" + con.getResultado().getString("pais_id") + "</td>");
-                                    out.println("<td>"+"<a href='../ServletCiudad?eliminar="+con.getResultado().getString("ciudad_id")+"' class='btn btn-danger'>Eliminar</a>"+"</td>");
-                                    out.println("<td>"+"<a href='editar.jsp?editar="+con.getResultado().getString("ciudad_id")+"' class='btn btn-primary'>Editar</a>"+"</td>");
+                                    Coneccion con = new Coneccion();
+                                    if (request.getParameter("buscarNombre") != null) {
+                                        if (request.getParameter("buscarNombre").isEmpty()) {
+                                            con.setConsulta("select * from Ciudades where estado='activo'");
+                                        } else {
+                                            String ciudad = request.getParameter("buscarNombre");
+                                            con.setConsulta("select * from Ciudades where nombre like '%" + ciudad + "%' and estado='activo'");
+                                        }
+                                    } else {
+                                        con.setConsulta("select * from Ciudades where estado='activo'");
+                                    }
                                 %>
-                            </tr>
-                            <% }%>
-                        </tbody>
-                            </table>
-                            <a href="../Inicio" class="btn btn-danger">Volver</a>
-                        
-                        
-                        
+                                <% while (con.getResultado().next()) { %>
+
+                                <tr>
+                                    <%
+                                        out.println("<td>" + con.getResultado().getString("ciudad_id") + "</td>");
+                                        out.println("<td>" + con.getResultado().getString("nombre") + "</td>");
+                                        out.println("<td>" + con.getResultado().getString("creado_por") + "</td>");
+                                        out.println("<td>" + con.getResultado().getString("pais_id") + "</td>");
+                                        out.println("<td>" + "<a href='../ServletCiudad?eliminar=" + con.getResultado().getString("ciudad_id") + "' class='btn btn-danger'>Eliminar</a>" + "</td>");
+                                        out.println("<td>" + "<a href='editar.jsp?editar=" + con.getResultado().getString("ciudad_id") + "' class='btn btn-primary'>Editar</a>" + "</td>");
+                                    %>
+                                </tr>
+                                <% }%>
+                            </tbody>
+                        </table>
+                        <a href="../Inicio" class="btn btn-danger">Volver</a>
+
+
+
                     </div>
                 </div>
             </div>

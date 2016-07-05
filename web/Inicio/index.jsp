@@ -26,7 +26,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="../Inicio">Prueba4 Progra2</a>
+                    <a class="navbar-brand" href="../Inicio">Prueba3 Progra2</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
@@ -65,9 +65,10 @@
                         <br>
                         <a href="../Paises">6.- Paises</a>
                         <br><br>
-                        <a href="../index.jsp" class="btn btn-danger">Volver al login</a>
+                        <a href="../index.jsp" class="btn btn-danger">Cerrar Sesión</a>
                     </div>                 
                 </div>
+               
             </div>
         </div><!-- /.container -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

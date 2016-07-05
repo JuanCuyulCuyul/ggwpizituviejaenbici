@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+       <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,8 +16,10 @@
         <title>Login</title>
         <link href="template/css/bootstrap.min.css" rel="stylesheet">
     </head>
+
     <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top">
+
+      <nav class="navbar navbar-inverse navbar-fixed-top">
 
             <div class="top-content">
 
@@ -25,7 +27,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-8 col-sm-offset-2 text">
-                                <h1><strong>Prueba 4</strong> Progra 2</h1>
+                                <h1><strong>Prueba 3</strong> Progra 2</h1>
                             </div>
                         </div>
                         <div class="row">
@@ -39,19 +41,19 @@
                                         <i class="fa fa-key"></i>
                                     </div>
                                 </div>
-                                <div class="form-bottom">
-                                    <form role="form" action="Inicio" method="post" class="login-form">
-                                        <div class="form-group">
-                                            <label class="sr-only" for="form-usuario">Usuario</label>
-                                            <input type="text" name="form-usuario" placeholder="Usuario..." class="form-usuario form-control" id="form-usuario">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="sr-only" for="form-clave">Clave</label>
-                                            <input type="clave" name="form-clave" placeholder="Clave..." class="form-clave form-control" id="form-clave">
-                                        </div>
-                                        <button type="submit" class="btn"><a href="Inicio"></a>Ingresar!</button>
-                                    </form>
-                                </div>
+                               <div class="form-bottom">
+                        <form role="form" METHOD=GET ACTION="Inicio" class="login-form">
+                            <div class="form-group">
+                                <label class="sr-only" for="form-usuario">Usuario</label>
+                                <input type="text" class="form-usuario form-control" id="exampleInputEmail1" name="form-usuario" placeholder="Usuario...">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-clave">Clave</label>
+                                <input type="password" class="form-clave form-control" id="form-clave" name="form-clave" placeholder="Clave..."><br>
+                                <button type="submit" class="btn"><a href="Inicio"></a>Ingresar!</button>
+                            </div>
+                        </form>
+                    </div>
                             </div>
                         </div>
                     </div>

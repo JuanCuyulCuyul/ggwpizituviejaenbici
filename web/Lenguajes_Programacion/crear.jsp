@@ -26,7 +26,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="../Inicio">Prueba4 Progra2</a>
+                    <a class="navbar-brand" href="../Inicio">Prueba3 Progra2</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
@@ -61,15 +61,11 @@
 
                             <div class="form-group">
                                 <label for="creador_id">Seleccionar Creador_ID</label>
-                                <select name="creadores" id="creador_id" class="form-control">
-
-                                </select>
+                                <input type="text" class="form-control" name="creador_id"  placeholder="Ingresar Creador_ID">
                             </div>
                             <div class="form-group">
                                 <label for="usuario_id">Seleccionar Usuario_ID</label>
-                                <select name="usuarios" id="usuario_id" class="form-control">
-
-                                </select>
+                                <input type="text" class="form-control" name="usuario_id"  placeholder="Ingresar Usuario_ID">
                             </div>
                             <button type="submit" class="btn btn-danger" name="guardar">Guardar</button>
                             <a href="../Inicio" class="btn btn-danger">Volver</a>                                                        
@@ -86,29 +82,30 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
         <script>
-            $(document).ready(function () {
-                $('select').select2();
-                $('#creadores').append('<option> Seleccionar Creador_ID</option>');
-                $.get("http://localhost:8080/Solido/ServletMostrarLenguaje", function (data, status) {
-                    $.each(data, function (i, item) {
-                        $('#creadores').append('<option value=' + item.creador_id + '>' + item.nombre + '</option>');
+                    $(document).ready(function () {
+                        $('select').select2();
+                        $('#creadores').append('<option> Seleccionar Creador_ID</option>');
+                        $.get("http://localhost:3306/Solido/ServletLenguaje_Programacion", function (data, status) {
+                            $.each(data, function (i, item) {
+                                $('#creadores').append('<option value=' + item.creador_id + '>' + item.nombre + '</option>');
+                            });
+
+                        });
+                        $("#creadores").change(function () {
+                            $("#usuarios").empty();
+                            var creador_id = $("#creadores").val();
+                            $.get("http://localhost:3306/Solido/ServletLenguaje_Programacion?creador_id=" + creador_id, function (data, status) {
+                                $.each(data, function (i, item) {
+                                    $('#usuarios').append('<option value=' + item.usuario_id + '>' + item.nombre + '</option>');
+                                });
+
+                            });
+                        });
                     });
 
-                });
-            });
 
-            $("#creadores").change(function () {
-                $("#usuarios").empty();
-                var creador_id = $("#creadores").val();
-                alert("" + servicio_id);
-                $.get("http://localhost:8080/Solido/ServletMostrarLenguaje?creador_id=" + creador_id, function (data, status) {
-                    $.each(data, function (i, item) {
-                        $('#usuarios').append('<option value=' + item.usuario_id + '>' + item.nombre + '</option>');
-                    });
 
-                });
 
-            });
         </script> 
     </body>
 </html>

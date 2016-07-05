@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="accesodato.Coneccion"%>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -24,7 +25,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="../Inicio">Prueba4 Progra2</a>
+                    <a class="navbar-brand" href="../Inicio">Prueba3 Progra2</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
@@ -60,7 +61,8 @@
                             <div class="form-group">
                                 
                                 <label for="pais_id">Seleccionar Pais_ID</label>
-                                <select name="paises" id="pais_id">
+                                
+                                <select class="form-control" name="pais_id" id="pais_id">
                                     <%
                                        Coneccion con=new Coneccion();
                                        con.setConsulta("select * from paises");
@@ -70,16 +72,21 @@
                                      <%}%>
                                 </select>
                             </div>
+                                
                             <button type="submit" class="btn btn-danger" name="guardar">Guardar</button>
                             <a href="../Inicio" class="btn btn-danger">Volver</a>
                         </form>
+                                
                     </div>
+                                
                 </div>
+                                
             </div>
 
         </div><!-- /.container -->
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="../template/js/bootstrap.min.js"></script>
+        
     </body>
 </html>

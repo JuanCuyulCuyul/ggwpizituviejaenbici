@@ -22,7 +22,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="../Inicio">Prueba4 Progra2</a>
+                    <a class="navbar-brand" href="../Inicio">Prueba3 Progra2</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
@@ -74,6 +74,7 @@
                                 <label for="nacionalidad_id">Nacionalidad_id</label>
                                 <input type="text" class="form-control" name="nacionalidad_id" value='<% out.println("" + con.getResultado().getString("nacionalidad_id")); %>' id="nacinalidad_id" placeholder="Ingresar Nacionalidad">
                             </div>
+                            
 
                             <button type="submit" class="btn btn-danger">Editar</button>
                         </form>

@@ -24,7 +24,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="../Inicio">Prueba4 Progra2</a>
+                        <a class="navbar-brand" href="../Inicio">Prueba3 Progra2</a>
                     </div>
                     <div id="navbar" class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="ciudad_id">Seleccionar Ciudad_ID</label>
-                                <select name="Ciudades" id="Ciudad_id">
+                                <select class="form-control" name="ciudad_id" id="Ciudad_id">
                                     <%
                                        Coneccion con=new Coneccion();
                                        con.setConsulta("select * from ciudades");
