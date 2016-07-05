@@ -37,7 +37,7 @@
                         <li><a href="../Usuarios/index.jsp">Usuarios</a></li>
                         <li><a href="../Ciudades/index.jsp">Ciudades</a></li>
                         <li><a href="../Paises/index.jsp">Paises</a></li>
-                        <li><a href="../ServletLogin?fuera=si">Log-out</a></li>
+                        <li><a href="../ServletLogin?fuera=si">Cerrar Sesion</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -66,7 +66,6 @@
                         <br>
                         <a href="../Paises">6.- Paises</a>
                         <br><br>
-                        <a href="../index.jsp" class="btn btn-danger">Cerrar Sesión</a>
                     </div>                 
                 </div>
                

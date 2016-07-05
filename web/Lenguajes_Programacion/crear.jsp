@@ -61,11 +61,26 @@
 
                             <div class="form-group">
                                 <label for="creador_id">Seleccionar Creador_ID</label>
-                                <input type="text" class="form-control" name="creador_id"  placeholder="Ingresar Creador_ID">
+                                <%
+                                    Coneccion con = new Coneccion();
+                                    con.setConsulta("select * from creadores");
+                                %>
+                                <select name="creador_id" class="form-control" id="creador_id">
+                                    <%while (con.getResultado().next()) {
+                                            out.println("<option value='" + con.getResultado().getString("creador_id") + "'>" + con.getResultado().getString("nombre") + "</option>");
+                                        }%>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="usuario_id">Seleccionar Usuario_ID</label>
-                                <input type="text" class="form-control" name="usuario_id"  placeholder="Ingresar Usuario_ID">
+                                <%
+                                    con.setConsulta("select * from usuarios");
+                                %>
+                                <select name="usuario_id" class="form-control" id="usuario_id">
+                                    <%while (con.getResultado().next()) {
+                                            out.println("<option value='" + con.getResultado().getString("usuario_id") + "'>" + con.getResultado().getString("usuario") + "</option>");
+                                        }%>
+                                </select>
                             </div>
                             <button type="submit" class="btn btn-danger" name="guardar">Guardar</button>
                             <a href="../Inicio" class="btn btn-danger">Volver</a>                                                        
@@ -81,31 +96,34 @@
         <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+
         <script>
-                    $(document).ready(function () {
-                        $('select').select2();
-                        $('#creadores').append('<option> Seleccionar Creador_ID</option>');
-                        $.get("http://localhost:3306/Solido/ServletLenguaje_Programacion", function (data, status) {
-                            $.each(data, function (i, item) {
-                                $('#creadores').append('<option value=' + item.creador_id + '>' + item.nombre + '</option>');
-                            });
-
-                        });
-                        $("#creadores").change(function () {
-                            $("#usuarios").empty();
-                            var creador_id = $("#creadores").val();
-                            $.get("http://localhost:3306/Solido/ServletLenguaje_Programacion?creador_id=" + creador_id, function (data, status) {
-                                $.each(data, function (i, item) {
-                                    $('#usuarios').append('<option value=' + item.usuario_id + '>' + item.nombre + '</option>');
-                                });
-
-                            });
+            $(document).ready(function () {
+                $('select').select2();
+                $('#creadores').append('<option value="none"> Seleccionar Creador</option>');
+                $.get("http://localhost:8080/prueba/ServletChungo", function (data, status) {
+                    $.each(data, function (i, item) {
+                        $("#creadores").append("<option value=" + item.creador_id + ">" + item.nombre + "</option>");
+                    });
+                });
+                $("#creadores").change(function () {
+                    $("#usuarios").empty();
+                    var creador_id = $("#creadores").val();
+                    $.get("http://localhost:8080/prueba/ServletChungo?creador_id=" + creador_id, function (data, status) {
+                        $.each(data, function (i, item) {
+                            $('#usuarios').append('<option value=' + item.usuario_id + '>' + item.nombre + '</option>');
                         });
                     });
 
+                });
+
+            });
+        </script>
 
 
 
-        </script> 
+
+
     </body>
 </html>

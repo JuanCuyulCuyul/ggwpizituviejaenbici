@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-       <head>
+    <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +19,7 @@
 
     <body>
 
-      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
 
             <div class="top-content">
 
@@ -41,30 +41,23 @@
                                         <i class="fa fa-key"></i>
                                     </div>
                                 </div>
-                               <div class="panel-body">
-                        <form method="POST" action="ServletLogin" class="form-horizontal">
-                            <div class="form-group">
-                                <label for="usuario" class="col-sm-2 control-label">Usuario</label>
-                                <div class="col-sm-10">
-                                <input type="text" name="usuario" id="usuario" placeholder="Nombre de usuario..." class="form-control" />
+                                <div class="form-bottom">
+                                    <form role="form" method="POST" action="ServletLogin" class="login-form">
+                                        <div class="form-group">
+                                            <label for="usuario" class="sr-only" >Usuario</label>
+                                            <input type="text" name="usuario" id="usuario" placeholder="Nombre de usuario..." class="form-usuario form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="clave" class="sr-only">Contraseña</label>
+                                                <input type="password" name="clave" id="clave" placeholder="Contraseña..." class="form-usuario form-control">
+                                        </div>
+                                                <button type="submit" name="login" class="btn" value="login">Ingresar!</button>
+                                    </form>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="clave" class="col-sm-2 control-label">Contraseña</label>
-                                <div class="col-sm-10">
-                                    <input type="password" name="clave" id="clave" placeholder="Contraseña..." class="form-control"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" name="login" class="btn btn-default" value="login">Ingresar</button>
-                                </div>
-                            </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-
             </div>
         </nav>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

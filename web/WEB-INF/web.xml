@@ -32,6 +32,10 @@
         <servlet-name>ServletLogin</servlet-name>
         <servlet-class>ServletLogin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletChungo</servlet-name>
+        <servlet-class>ServletChungo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletSolido</servlet-name>
         <url-pattern>/ServletSolido</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>ServletLogin</servlet-name>
         <url-pattern>/ServletLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletChungo</servlet-name>
+        <url-pattern>/ServletChungo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
