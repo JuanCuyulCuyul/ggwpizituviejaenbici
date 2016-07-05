@@ -41,23 +41,29 @@
                                         <i class="fa fa-key"></i>
                                     </div>
                                 </div>
-                               <div class="form-bottom">
-                        <form role="form" METHOD=GET ACTION="Inicio" class="login-form">
+                               <div class="panel-body">
+                        <form method="POST" action="ServletLogin" class="form-horizontal">
                             <div class="form-group">
-                                <label class="sr-only" for="form-usuario">Usuario</label>
-                                <input type="text" class="form-usuario form-control" id="exampleInputEmail1" name="form-usuario" placeholder="Usuario...">
+                                <label for="usuario" class="col-sm-2 control-label">Usuario</label>
+                                <div class="col-sm-10">
+                                <input type="text" name="usuario" id="usuario" placeholder="Nombre de usuario..." class="form-control" />
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label class="sr-only" for="form-clave">Clave</label>
-                                <input type="password" class="form-clave form-control" id="form-clave" name="form-clave" placeholder="Clave..."><br>
-                                <button type="submit" class="btn"><a href="Inicio"></a>Ingresar!</button>
+                                <label for="clave" class="col-sm-2 control-label">Contraseña</label>
+                                <div class="col-sm-10">
+                                    <input type="password" name="clave" id="clave" placeholder="Contraseña..." class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" name="login" class="btn btn-default" value="login">Ingresar</button>
+                                </div>
                             </div>
                         </form>
                     </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
+            </div>
 
             </div>
         </nav>

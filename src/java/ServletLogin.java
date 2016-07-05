@@ -22,35 +22,38 @@ import javax.servlet.http.HttpSession;
  */
 public class ServletLogin extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-           HttpSession logeado = request.getSession(true);
-           String user=request.getParameter("username");
-           String pass=request.getParameter("password");
-           Coneccion con=new Coneccion();
-           con.setConsulta("select * from usuarios where usuario='"+user+"'");
-           try {
-               while(con.getResultado().next()){
-                   if(con.getResultado().getString("clave").equals(pass)){
-                       logeado.setAttribute("valido","true");
-                   }else{
-                       logeado.setAttribute("valido","false");
-                   }
-               }
-           } catch (SQLException ex) {
-               Logger.getLogger(ServletLogin.class.getName()).log(Level.SEVERE, null, ex);
-           }
+           HttpSession sesion = request.getSession();
+            
+           
+            String usuario;
+            String clave;
+            
+            usuario = request.getParameter("usuario");
+            
+            clave = request.getParameter("clave");
+            
+            if (request.getParameter("fuera") != null) {
+                sesion.invalidate();
+                response.sendRedirect("index.jsp");
+            }
+            Coneccion con = new Coneccion();
+            con.setConsulta("select * from Usuarios where usuario='" + usuario + "'");
+            while (con.getResultado().next()) {
+                if (con.getResultado().getString("clave").equals(clave) && sesion.getAttribute("usuario") == null) {
+                    sesion.setAttribute("usuario", usuario);
+                }
+            }
+            if (sesion.getAttribute("usuario") != null) {
+                response.sendRedirect("Inicio/index.jsp");
+            } else {
+                response.sendRedirect("LoginFallido.jsp");
+            }
+        } catch (Exception ex) {
         }
     }
 
